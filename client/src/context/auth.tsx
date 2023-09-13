@@ -2,9 +2,7 @@ import React, { createContext, useReducer, useContext } from "react";
 
 // import jwtDecode from "jwt-decode";
 
-type Action =
-  | { type: "LOGIN"; token: string }
-  | { type: "LOGOUT"; token: string };
+type Action = { type: "LOGIN"; token: string } | { type: "LOGOUT" };
 type Dispatch = (action: Action) => void;
 type State = { user: string };
 type AuthProviderProps = { children: React.ReactNode };

@@ -2,10 +2,12 @@ import * as React from "react";
 
 import { FormEvent } from "react";
 import { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, FormText } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
+import { Link } from "react-router-dom";
 
 import { useAuthDispatch } from "../context/auth";
 
@@ -76,6 +78,12 @@ export default function Login() {
               <Button variant="primary" type="submit">
                 Submit
               </Button>
+              <br />
+              <div className="mt-2">
+                <FormText>
+                  Don't have an account? <Link to="/register">Register</Link>
+                </FormText>
+              </div>
             </div>
           </Form>
         </Col>
