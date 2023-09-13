@@ -1,37 +1,61 @@
-import * as React from 'react';
+import * as React from "react";
 
-import {Container} from "react-bootstrap";
-import { Row, Col } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { FormEvent } from "react";
+import { useState } from "react";
+import { Container } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export default function Login() {
-    return (
-      <Container className="justify-content-center">
-        <Row>
-          <Col className="bg-light p-5 justify-content-center">
-            
-            <Form>
-              <Form.Group className="mb-3" controlId="LoginTitle">
-                <Form.Text className="fs-2 text-dark">Login</Form.Text>
-              </Form.Group>
+  const [variables, setVariables] = useState({
+    username: "",
+    password: "",
+  });
 
-              <Form.Group className="mb-3" controlId="LoginEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-              </Form.Group>
+  function submitLoginForm(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log(variables);
+  }
 
-              <Form.Group className="mb-3" controlId="LoginPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
+  return (
+    <Container className="justify-content-center">
+      <Row className="justify-content-center pt-5">
+        <Col className="bg-light p-5 justify-content-center" lg={6} md={8}>
+          <h2 className="fs-2 text-dark text-center">Login</h2>
+          <Form onSubmit={submitLoginForm}>
+            <Form.Group className="mb-3" controlId="LoginEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                value={variables.username}
+                onChange={(e) =>
+                  setVariables({ ...variables, username: e.target.value })
+                }
+                placeholder="Enter email"
+              />
+            </Form.Group>
 
+            <Form.Group className="mb-3" controlId="LoginPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={variables.password}
+                onChange={(e) =>
+                  setVariables({ ...variables, password: e.target.value })
+                }
+                placeholder="Password"
+              />
+            </Form.Group>
+
+            <div className="text-center">
               <Button variant="primary" type="submit">
                 Submit
               </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  );
+}
