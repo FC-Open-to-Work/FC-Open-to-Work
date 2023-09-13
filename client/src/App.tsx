@@ -7,15 +7,19 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 // import Register from "./pages/Register";
 
+import { AuthProvider } from "./context/auth";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* <Route exact path="/" element= {<Register />} /> */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route exact path="/" element= {<Register />} /> */}
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

@@ -7,15 +7,39 @@ import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import { useAuthDispatch } from "../context/auth";
+
+import axios from "axios";
+
 export default function Login() {
   const [variables, setVariables] = useState({
     username: "",
     password: "",
   });
 
+  const dispatch = useAuthDispatch();
+
   function submitLoginForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(variables);
+
+    // axios
+    //   .get("http://localhost:8080/login", {
+    //     params: { username: variables.username, password: variables.password },
+    //   })
+    //   .then(function (response) {
+    //     // handle success
+    //     console.log(response);
+    //     dispatch({ type: "LOGIN", token: DATA WITH TOKEN });
+    //     window.location.href = "/";
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     console.log(error);
+    //   });
+
+    dispatch({ type: "LOGIN", token: "test" });
+    window.location.href = "/home";
   }
 
   return (
