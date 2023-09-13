@@ -41,7 +41,7 @@ export default function Login() {
     //   });
 
     dispatch({ type: "LOGIN", token: "test" });
-    window.location.href = "/home";
+    window.location.href = "/";
   }
 
   return (

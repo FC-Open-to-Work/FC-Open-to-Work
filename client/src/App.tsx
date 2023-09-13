@@ -9,14 +9,27 @@ import Register from "./pages/Register";
 
 import { AuthProvider } from "./context/auth";
 
+import DynamicRoute from "./util/DynamicRoute";
+
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={<DynamicRoute element={<Home />} authenticated={true} />}
+          />
+          <Route
+            path="/login"
+            element={<DynamicRoute element={<Login />} authenticated={false} />}
+          />
+          <Route
+            path="/register"
+            element={
+              <DynamicRoute element={<Register />} authenticated={false} />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
