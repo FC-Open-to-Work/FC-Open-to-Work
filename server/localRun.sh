@@ -4,7 +4,7 @@
 container_name="mysql_docker"
 
 # Check if the container is running
-if docker ps -q -f name="$container_name" | grep -q .; then
+if docker ps -aq -f name="$container_name" | grep -q .; then
     # Container is running, stop and remove it
     echo "Stopping and removing existing container '$container_name'..."
     docker stop "$container_name"
