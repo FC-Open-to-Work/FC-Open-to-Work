@@ -1,0 +1,81 @@
+# API Guide
+
+## Authentication
+
+### Login
+
+```
+POST /api/login
+```
+
+#### Request
+
+```
+{
+    "username": "username",
+    "password": "password"
+}
+```
+
+#### Responses (Corresponding Status Code)
+
+**200** - Login successful
+
+```
+{
+    "token": "TOKEN_VALUE"
+}
+```
+
+**401** - Incorrect password
+
+```
+{
+    "error": "Bad credentials"
+}
+```
+
+**404** - User not found
+
+```
+{
+    "error": "User not found"
+}
+```
+
+### Signup
+
+```
+POST /api/signup
+```
+
+#### Request
+
+```
+{
+    "username": "username",
+    "password": "password",
+    "email": "email"
+}
+```
+
+#### Responses (Corresponding Status Code)
+
+**201** - Signup successful
+
+```
+{
+    "success": "User created"
+}
+```
+
+**409** - Duplicate username
+
+```
+{
+    "error": "Duplicate username"
+}
+```
+
+
+
