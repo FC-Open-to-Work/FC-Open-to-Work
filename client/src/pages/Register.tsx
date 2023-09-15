@@ -19,28 +19,39 @@ export default function Register() {
     confirmPassword: "",
   });
 
+  const [errors, setErrors] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   function submitRegisterForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(variables);
 
-    // axios
-    //   .post("http://localhost:8080/register", {
-    //     email: variables.email,
-    //     username: variables.username,
-    //     password: variables.password,
-    //     confirmPassword: variables.confirmPassword,
-    //   })
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response);
-    //     window.location.href = "/login";
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   });
+    if (variables.password === variables.confirmPassword) {
+      // axios
+      //   .post("http://localhost:8080/register", {
+      //     email: variables.email,
+      //     username: variables.username,
+      //     password: variables.password,
+      //     confirmPassword: variables.confirmPassword,
+      //   })
+      //   .then(function (response) {
+      //     // handle success
+      //     console.log(response);
+      //     window.location.href = "/login";
+      //   })
+      //   .catch(function (error) {
+      //     // handle error
+      //     console.log(error);
+      //   });
 
-    window.location.href = "/login";
+      window.location.href = "/login";
+    } else {
+      setErrors({ ...errors, confirmPassword: "password does not match" });
+    }
   }
 
   return (
@@ -50,10 +61,13 @@ export default function Register() {
           <h2 className="fs-2 text-dark text-center">Register</h2>
           <Form onSubmit={submitRegisterForm}>
             <Form.Group className="mb-3" controlId="RegisterEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className={errors.email && "text-danger"}>
+                {errors.email || "Email address"}
+              </Form.Label>
               <Form.Control
                 type="email"
                 value={variables.email}
+                className={errors.email && "is-invalid"}
                 onChange={(e) =>
                   setVariables({ ...variables, email: e.target.value })
                 }
@@ -62,10 +76,13 @@ export default function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="RegisterUsername">
-              <Form.Label>Username</Form.Label>
+              <Form.Label className={errors.username && "text-danger"}>
+                {errors.username || "Username"}
+              </Form.Label>
               <Form.Control
                 type="text"
                 value={variables.username}
+                className={errors.username && "is-invalid"}
                 onChange={(e) =>
                   setVariables({ ...variables, username: e.target.value })
                 }
@@ -74,10 +91,13 @@ export default function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="RegisterPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className={errors.password && "text-danger"}>
+                {errors.password || "Password"}
+              </Form.Label>
               <Form.Control
                 type="password"
                 value={variables.password}
+                className={errors.password && "is-invalid"}
                 onChange={(e) =>
                   setVariables({ ...variables, password: e.target.value })
                 }
@@ -86,10 +106,13 @@ export default function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="RegisterConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label className={errors.confirmPassword && "text-danger"}>
+                {errors.confirmPassword || "Confirm Password"}
+              </Form.Label>
               <Form.Control
                 type="password"
                 value={variables.confirmPassword}
+                className={errors.confirmPassword && "is-invalid"}
                 onChange={(e) =>
                   setVariables({
                     ...variables,

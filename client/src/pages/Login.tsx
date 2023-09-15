@@ -19,6 +19,11 @@ export default function Login() {
     password: "",
   });
 
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+  });
+
   const dispatch = useAuthDispatch();
 
   function submitLoginForm(e: FormEvent<HTMLFormElement>) {
@@ -51,10 +56,13 @@ export default function Login() {
           <h2 className="fs-2 text-dark text-center">Login</h2>
           <Form onSubmit={submitLoginForm}>
             <Form.Group className="mb-3" controlId="LoginEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className={errors.username && "text-danger"}>
+                {errors.username || "Email address"}
+              </Form.Label>
               <Form.Control
                 type="email"
                 value={variables.username}
+                className={errors.username && "is-invalid"}
                 onChange={(e) =>
                   setVariables({ ...variables, username: e.target.value })
                 }
@@ -63,14 +71,17 @@ export default function Login() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="LoginPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className={errors.password && "text-danger"}>
+                {errors.password || "Password"}
+              </Form.Label>
               <Form.Control
                 type="password"
                 value={variables.password}
+                className={errors.password && "is-invalid"}
                 onChange={(e) =>
                   setVariables({ ...variables, password: e.target.value })
                 }
-                placeholder="Password"
+                placeholder="******"
               />
             </Form.Group>
 
