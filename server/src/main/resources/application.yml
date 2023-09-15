@@ -20,6 +20,10 @@ spring:
     password: opentowork
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+server:
+  error:
+    include-message: always
+
 rsa:
   private-key: classpath:certs/private.pem
   public-key: classpath:certs/public.pem

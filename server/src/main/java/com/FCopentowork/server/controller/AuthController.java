@@ -2,69 +2,51 @@ package com.FCopentowork.server.controller;
 
 import com.FCopentowork.server.model.LoginRequest;
 import com.FCopentowork.server.model.SignupRequest;
-import com.FCopentowork.server.model.User;
-import com.FCopentowork.server.repository.UserRepository;
-import com.FCopentowork.server.service.TokenService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.FCopentowork.server.service.AuthenticationService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Map;
 
 @RestController
 public class AuthController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AuthController.class);
+    private final AuthenticationService AuthenticationService;
 
-    private final TokenService tokenService;
-    private final UserRepository userRepository;
-    private final AuthenticationManager authenticationManager;
-    private final PasswordEncoder encoder;
-
-    public AuthController(TokenService tokenService,
-                          UserRepository userRepository,
-                          AuthenticationManager authenticationManager,
-                          PasswordEncoder encoder) {
-        this.tokenService = tokenService;
-        this.userRepository = userRepository;
-        this.authenticationManager = authenticationManager;
-        this.encoder = encoder;
+    public AuthController(AuthenticationService AuthenticationService) {
+        this.AuthenticationService = AuthenticationService;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody LoginRequest userLogin) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        userLogin.username(),
-                        userLogin.password()));
-        LOG.debug("Login token requested for user: {}", authentication.getName());
-        String token = tokenService.generateToken(authentication);
-        LOG.debug("Login token granted: {}", token);
-        return token;
+    @PostMapping(value = "/login",
+            consumes = "application/json",
+            produces = "application/json")
+    public Map<String, Object> login(@Valid @RequestBody LoginRequest userLogin) {
+        String username = userLogin.username();
+        String password = userLogin.password();
+
+        return AuthenticationService.loginService(username, password);
     }
 
-    @PostMapping("/signup")
-    public String signup(@RequestBody SignupRequest signupRequest) {
-        String firstName = signupRequest.firstName();
-        String lastName = signupRequest.lastName();
+    @PostMapping(value = "/signup",
+            consumes = "application/json",
+            produces = "application/json")
+    public Map<String, Object> signup(@Valid @RequestBody SignupRequest signupRequest)
+            throws ResponseStatusException {
+        String username = signupRequest.username();
         String email = signupRequest.email();
         String password = signupRequest.password();
 
-        LOG.debug("Signup requested for user: {}", email);
+        Map<String, Object> response;
+        try {
+            response = AuthenticationService
+                    .signupService(username, email, password);
+        } catch (Exception e) {
+            // TODO This isn't returning the proper status code
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
 
-        User n = new User();
-        n.setFirstName(firstName);
-        n.setLastName(lastName);
-        n.setEmail(email);
-        n.setPassword("{bcrypt}" + encoder.encode(password));
-        n.setRoles("ROLE_USER");
-
-        userRepository.save(n);
-        LOG.debug("Signup successful for user: {} with role: {}", email, n.getRoles());
-        return "Signup successful for user: " + email;
+        return response;
     }
 }
