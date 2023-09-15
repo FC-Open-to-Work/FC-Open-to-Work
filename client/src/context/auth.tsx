@@ -22,8 +22,6 @@ const token = localStorage.getItem("token");
 let user: string = "";
 if (token) {
   const decodedToken: jwt = jwtDecode<jwt>(token);
-  console.log("type is: " + typeof decodedToken);
-  console.log("token is: " + JSON.stringify(decodedToken));
   const expiresAt: Date = new Date(decodedToken.exp * 1000);
 
   if (new Date() > expiresAt) {
