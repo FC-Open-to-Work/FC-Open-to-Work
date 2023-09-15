@@ -60,9 +60,9 @@ export default function Login() {
         // handle error
         console.log(error);
         if (error.response) {
-          if (error.response.status == 401) {
+          if (error.response.status === 401) {
             setErrors({ ...errors, password: error.response.data.error });
-          } else if (error.response.status == 404) {
+          } else if (error.response.status === 404) {
             setErrors({ ...errors, email: error.response.data.error });
           } else {
             setErrors({
