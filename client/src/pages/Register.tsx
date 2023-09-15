@@ -31,24 +31,41 @@ export default function Register() {
     console.log(variables);
 
     if (variables.password === variables.confirmPassword) {
-      // axios
-      //   .post("http://localhost:8080/register", {
-      //     email: variables.email,
-      //     username: variables.username,
-      //     password: variables.password,
-      //     confirmPassword: variables.confirmPassword,
-      //   })
-      //   .then(function (response) {
-      //     // handle success
-      //     console.log(response);
-      //     window.location.href = "/login";
-      //   })
-      //   .catch(function (error) {
-      //     // handle error
-      //     console.log(error);
-      //   });
-
-      window.location.href = "/login";
+      axios
+        .post("http://localhost:8080/signup", {
+          email: variables.email,
+          username: variables.username,
+          password: variables.password,
+        })
+        .then(function (response) {
+          // handle success
+          console.log(response);
+          window.location.href = "/login";
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          if (error.response) {
+            if (error.response.status == 409) {
+              setErrors({ ...errors, email: error.response.data.error });
+            } else {
+              setErrors({
+                ...errors,
+                email: "Error from backend: " + error.response.status,
+              });
+            }
+          } else if (error.request) {
+            setErrors({
+              ...errors,
+              email: "No response",
+            });
+          } else {
+            setErrors({
+              ...errors,
+              email: "Error when setting up the request",
+            });
+          }
+        });
     } else {
       setErrors({ ...errors, confirmPassword: "password does not match" });
     }
