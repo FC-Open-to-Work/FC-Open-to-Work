@@ -46,7 +46,7 @@ export default function Register() {
           // handle error
           console.log(error);
           if (error.response) {
-            if (error.response.status == 409) {
+            if (error.response.status === 409) {
               setErrors({ ...errors, email: error.response.data.error });
             } else {
               setErrors({

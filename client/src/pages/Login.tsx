@@ -45,8 +45,43 @@ export default function Login() {
     //     console.log(error);
     //   });
 
-    dispatch({ type: "LOGIN", token: "test" });
-    window.location.href = "/";
+    axios
+      .post("http://localhost:8080/login", {
+        email: variables.email,
+        password: variables.password,
+      })
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        dispatch({ type: "LOGIN", token: response.data.token });
+        window.location.href = "/";
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        if (error.response) {
+          if (error.response.status == 401) {
+            setErrors({ ...errors, password: error.response.data.error });
+          } else if (error.response.status == 404) {
+            setErrors({ ...errors, email: error.response.data.error });
+          } else {
+            setErrors({
+              ...errors,
+              email: "Error from backend: " + error.response.status,
+            });
+          }
+        } else if (error.request) {
+          setErrors({
+            ...errors,
+            email: "No response",
+          });
+        } else {
+          setErrors({
+            ...errors,
+            email: "Error when setting up the request",
+          });
+        }
+      });
   }
 
   return (
