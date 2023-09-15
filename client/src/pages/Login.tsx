@@ -15,12 +15,12 @@ import axios from "axios";
 
 export default function Login() {
   const [variables, setVariables] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -56,15 +56,15 @@ export default function Login() {
           <h2 className="fs-2 text-dark text-center">Login</h2>
           <Form onSubmit={submitLoginForm}>
             <Form.Group className="mb-3" controlId="LoginEmail">
-              <Form.Label className={errors.username && "text-danger"}>
-                {errors.username || "Email address"}
+              <Form.Label className={errors.email && "text-danger"}>
+                {errors.email || "Email address"}
               </Form.Label>
               <Form.Control
                 type="email"
-                value={variables.username}
-                className={errors.username && "is-invalid"}
+                value={variables.email}
+                className={errors.email && "is-invalid"}
                 onChange={(e) =>
-                  setVariables({ ...variables, username: e.target.value })
+                  setVariables({ ...variables, email: e.target.value })
                 }
                 placeholder="Enter email"
               />
