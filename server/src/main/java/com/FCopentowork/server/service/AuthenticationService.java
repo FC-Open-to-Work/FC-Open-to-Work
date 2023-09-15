@@ -1,7 +1,7 @@
 package com.FCopentowork.server.service;
 
 import com.FCopentowork.server.controller.AuthController;
-import com.FCopentowork.server.exception.DuplicateUsernameException;
+import com.FCopentowork.server.exception.DuplicateEmailException;
 import com.FCopentowork.server.exception.UserDoesNotExistException;
 import com.FCopentowork.server.model.User;
 import com.FCopentowork.server.repository.UserRepository;
@@ -35,18 +35,18 @@ public class AuthenticationService {
         this.encoder = encoder;
     }
 
-    public Map<String, Object> loginService(String username,
+    public Map<String, Object> loginService(String email,
                                             String password) {
-        LOG.debug("Login token requested for user: {}", username);
+        LOG.debug("Login token requested for user: {}", email);
 
         Map<String, Object> response = new HashMap<>();
         // Check if user exists
-        if (userRepository.findByUsername(username).isEmpty()) {
+        if (userRepository.findByEmail(email).isEmpty()) {
             throw new UserDoesNotExistException("User not found");
         } else {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            username,
+                            email,
                             password));
             String token = tokenService.generateToken(authentication);
             LOG.debug("Login token granted: {}", token);
@@ -64,8 +64,8 @@ public class AuthenticationService {
 
         Map<String, Object> response = new HashMap<>();
         // Check for duplicate users
-        if (userRepository.findByUsername(username).isPresent()) {
-            throw new DuplicateUsernameException("Duplicate username");
+        if (userRepository.findByEmail(email).isPresent()) {
+            throw new DuplicateEmailException("Duplicate email");
         } else {
             User n = new User();
             n.setUsername(username);

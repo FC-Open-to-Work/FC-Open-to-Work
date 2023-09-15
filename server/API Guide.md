@@ -12,7 +12,7 @@ POST /login
 
 ```
 {
-    "username": "username",
+    "email": "email",
     "password": "password"
 }
 ```
@@ -69,11 +69,11 @@ POST /signup
 }
 ```
 
-**409** - Duplicate username
+**409** - Duplicate email
 
 ```
 {
-    "error": "Duplicate username"
+    "error": "Duplicate email"
 }
 ```
 

@@ -1,6 +1,6 @@
 package com.FCopentowork.server.controller;
 
-import com.FCopentowork.server.exception.DuplicateUsernameException;
+import com.FCopentowork.server.exception.DuplicateEmailException;
 import com.FCopentowork.server.exception.UserDoesNotExistException;
 import com.FCopentowork.server.model.LoginRequest;
 import com.FCopentowork.server.model.SignupRequest;
@@ -27,14 +27,14 @@ public class AuthController {
             consumes = "application/json",
             produces = "application/json")
     public ResponseEntity<Map<String, Object>> login(@Valid @RequestBody LoginRequest userLogin) {
-        String username = userLogin.username();
+        String email = userLogin.email();
         String password = userLogin.password();
 
         ResponseEntity<Map<String, Object>> responseEntity;
         Map<String, Object> response;
         try {
             response = AuthenticationService
-                    .loginService(username, password);
+                    .loginService(email, password);
             responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } catch (UserDoesNotExistException e) {
             response = Map.of("error", e.getMessage());
@@ -61,7 +61,7 @@ public class AuthController {
             response = AuthenticationService
                     .signupService(username, email, password);
             responseEntity = new ResponseEntity<>(response, HttpStatus.CREATED);
-        } catch (DuplicateUsernameException e) {
+        } catch (DuplicateEmailException e) {
             response = Map.of("error", e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
