@@ -5,7 +5,7 @@
 ### Login
 
 ```
-POST /api/login
+POST /login
 ```
 
 #### Request
@@ -46,7 +46,7 @@ POST /api/login
 ### Signup
 
 ```
-POST /api/signup
+POST /signup
 ```
 
 #### Request
