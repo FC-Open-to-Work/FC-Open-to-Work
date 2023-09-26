@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import { useAuthDispatch } from "../context/auth";
 
-export default function Login() {
+export default function Home() {
   const authDispatch = useAuthDispatch();
 
   const logout = () => {
