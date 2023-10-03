@@ -28,25 +28,15 @@ export default function Login() {
 
   function submitLoginForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(variables);
 
-    // axios
-    //   .get("http://localhost:8080/login", {
-    //     params: { username: variables.username, password: variables.password },
-    //   })
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response);
-    //     dispatch({ type: "LOGIN", token: DATA WITH TOKEN });
-    //     window.location.href = "/";
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   });
+    const api_domain = process.env.BACKEND_API_DOMAIN
+      ? process.env.BACKEND_API_DOMAIN
+      : "localhost";
+    const api_url =
+      "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
 
     axios
-      .post("http://localhost:8080/login", {
+      .post(api_url + "/login", {
         email: variables.email,
         password: variables.password,
       })

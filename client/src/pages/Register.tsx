@@ -28,11 +28,16 @@ export default function Register() {
 
   function submitRegisterForm(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(variables);
+
+    const api_domain = process.env.BACKEND_API_DOMAIN
+      ? process.env.BACKEND_API_DOMAIN
+      : "localhost";
+    const api_url =
+      "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
 
     if (variables.password === variables.confirmPassword) {
       axios
-        .post("http://localhost:8080/signup", {
+        .post(api_url + "/signup", {
           email: variables.email,
           username: variables.username,
           password: variables.password,

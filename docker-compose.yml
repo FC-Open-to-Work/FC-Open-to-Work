@@ -1,0 +1,42 @@
+services:
+  otw-mysql:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.db
+    container_name: mysql_docker
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+
+  otw-backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.backend
+    container_name: otw-backend
+    environment:
+      MYSQL_HOST: "otw-mysql"
+    ports:
+      - 8080:8080
+    networks:
+      - backend
+      - frontend
+
+  otw-frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: otw-frontend
+    environment:
+      BACKEND_API_DOMAIN: "otw-backend"
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+
+networks:
+  backend:
+  frontend:
