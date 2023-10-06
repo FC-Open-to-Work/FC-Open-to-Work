@@ -6,6 +6,8 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 
+RUN npm install -g nodemon
+
 COPY . .
 
-CMD ["nodemon", "--exec", "npm", "run", "start"]
+CMD ["nodemon", "-L", "--exec", "npm", "run", "start"]
