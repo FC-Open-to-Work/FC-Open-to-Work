@@ -8,12 +8,19 @@ services:
       - 3306:3306
     networks:
       - backend
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
 
   otw-backend:
     build:
       context: ./server
       dockerfile: Dockerfile.backend
     container_name: otw-backend
+    depends_on:
+      otw-mysql:
+        condition: service_healthy
     environment:
       MYSQL_HOST: "otw-mysql"
     ports:
@@ -27,6 +34,8 @@ services:
       context: ./client
       dockerfile: Dockerfile
     container_name: otw-frontend
+    depends_on:
+      - otw-backend
     environment:
       BACKEND_API_DOMAIN: "otw-backend"
     ports:
