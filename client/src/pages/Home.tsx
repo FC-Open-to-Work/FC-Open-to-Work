@@ -20,7 +20,7 @@ export default function Home() {
       <Row>
         <Col className="fs-1 text-center">Homepage</Col>
       </Row>
-
+        Home
       <Row>
         <Col>
           <Button variant="link" className="w-auto " onClick={logout}>
