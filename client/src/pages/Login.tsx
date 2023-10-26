@@ -12,6 +12,7 @@ import axios from "axios";
 import Header from "../components/login-signup/Header";
 import Input from "../components/login-signup/Input";
 import {loginFields} from "../components/login-signup/formFields";
+import FormAction from "../components/login-signup/formAction";
 
 export default function Login() {
     const [variables, setVariables] = useState({
@@ -137,9 +138,9 @@ export default function Login() {
                     {loginFields.map(field =>
                         <Input
                             key={field.id}
-                            handleChange={() => {}}
-                            // value={loginState[field.id]}
-                            value="temp"
+                            handleChange={(e) =>
+                                setVariables({...variables, email: e.target.value})}
+                            value={(field.name === "email") ? variables.email : variables.password}
                             labelText={field.labelText}
                             labelFor={field.labelFor}
                             id={field.id}
@@ -150,6 +151,8 @@ export default function Login() {
                         />
                     )}
                 </div>
+
+                <FormAction handleSubmit={submitLoginForm} text="Login"/>
             </form>
         </div>
     );
