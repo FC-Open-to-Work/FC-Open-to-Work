@@ -1,8 +1,6 @@
 import {Console} from "console";
 import * as React from "react";
 
-import {Container} from "react-bootstrap";
-import {Row, Col, Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import CanvasContainer from "../components/CanvasContainer"
 
@@ -17,21 +15,24 @@ export default function Home() {
     };
 
     return (
-        <Container className="vh-100">
-            <Row>
-                <Col className="fs-1 text-center">Homepage</Col>
-            </Row>
-            {/*TODO: need some height fixing here */}
-            <Row className="h-100">
-                <CanvasContainer />
-            </Row>
-            <Row>
-                <Col>
-                    <Button variant="link" className="w-auto " onClick={logout}>
-                        Logout
-                    </Button>
-                </Col>
-            </Row>
-        </Container>
+        // <Container className="vh-100">
+        //     <Row>
+        //         <Col className="fs-1 text-center">Homepage</Col>
+        //     </Row>
+        //     {/*TODO: need some height fixing here */}
+        //     <Row className="h-100">
+        //         <CanvasContainer />
+        //     </Row>
+        //     <Row>
+        //         <Col>
+        //             <Button variant="link" className="w-auto " onClick={logout}>
+        //                 Logout
+        //             </Button>
+        //         </Col>
+        //     </Row>
+        // </Container>
+        <div>
+            Home
+        </div>
     );
 }
