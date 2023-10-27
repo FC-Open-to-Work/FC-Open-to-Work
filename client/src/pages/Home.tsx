@@ -33,6 +33,7 @@ export default function Home() {
         // </Container>
         <div>
             Home
+            <button onClick={logout}>Logout</button>
         </div>
     );
 }

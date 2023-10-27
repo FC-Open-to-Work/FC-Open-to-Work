@@ -12,8 +12,8 @@ interface formFields{
 const loginFields : formFields[]=[
     {
         labelText:"Email address",
-        labelFor:"email-address",
-        id:"email-address",
+        labelFor:"email",
+        id:"email",
         name:"email",
         type:"email",
         autoComplete:"email",
@@ -26,7 +26,7 @@ const loginFields : formFields[]=[
         id:"password",
         name:"password",
         type:"password",
-        autoComplete:"current-password",
+        autoComplete:"password",
         isRequired:true,
         placeholder:"Password"
     }
@@ -45,8 +45,8 @@ const signupFields : formFields[]=[
     },
     {
         labelText:"Email address",
-        labelFor:"email-address",
-        id:"email-address",
+        labelFor:"email",
+        id:"email",
         name:"email",
         type:"email",
         autoComplete:"email",
@@ -59,17 +59,17 @@ const signupFields : formFields[]=[
         id:"password",
         name:"password",
         type:"password",
-        autoComplete:"current-password",
+        autoComplete:"password",
         isRequired:true,
         placeholder:"Password"
     },
     {
         labelText:"Confirm Password",
-        labelFor:"confirm-password",
-        id:"confirm-password",
-        name:"confirm-password",
+        labelFor:"confirmPassword",
+        id:"confirmPassword",
+        name:"confirmPassword",
         type:"password",
-        autoComplete:"confirm-password",
+        autoComplete:"confirmPassword",
         isRequired:true,
         placeholder:"Confirm Password"
     }
