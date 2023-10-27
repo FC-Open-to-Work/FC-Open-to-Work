@@ -3,8 +3,6 @@ import * as React from "react";
 import {FormEvent} from "react";
 import {useState} from "react";
 
-import {Link} from "react-router-dom";
-
 import {useAuthDispatch} from "../context/auth";
 
 import axios from "axios";
@@ -35,6 +33,8 @@ export default function Login() {
             : "localhost";
         const api_url =
             "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
+
+        console.log("login\n");
 
         axios
             .post(api_url + "/login", {
@@ -133,13 +133,14 @@ export default function Login() {
                 linkName="Signup"
                 linkUrl="/signup"
             />
-            <form className="mt-8 space-y-6">
+            <form className="mt-8 space-y-6" onSubmit={submitLoginForm}>
                 <div className="space-y-px">
                     {loginFields.map(field =>
                         <Input
                             key={field.id}
-                            handleChange={(e) =>
-                                setVariables({...variables, email: e.target.value})}
+                            handleChange={(field.name === "email") ? (e) =>
+                                setVariables({...variables, email: e.target.value}): (e) =>
+                                setVariables({...variables, password: e.target.value})}
                             value={(field.name === "email") ? variables.email : variables.password}
                             labelText={field.labelText}
                             labelFor={field.labelFor}
@@ -152,7 +153,8 @@ export default function Login() {
                     )}
                 </div>
 
-                <FormAction handleSubmit={submitLoginForm} text="Login"/>
+                {/*<FormAction handleSubmit={submitLoginForm} text="Login"/>*/}
+                <FormAction text="Login"/>
             </form>
         </div>
     );
