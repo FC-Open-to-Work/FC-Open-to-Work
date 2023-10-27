@@ -17,7 +17,8 @@ function submitLoginForm(e: FormEvent<HTMLFormElement>,
                          variables: LoginVariables,
                          errors: LoginVariables,
                          setErrors: any,
-                         dispatch: any) {
+                         dispatch: any,
+                         navigate: any) {
     e.preventDefault();
 
     const api_domain = process.env.BACKEND_API_DOMAIN
@@ -37,7 +38,8 @@ function submitLoginForm(e: FormEvent<HTMLFormElement>,
             // handle success
             console.log(response);
             dispatch({type: "LOGIN", token: response.data.token});
-            window.location.href = "/";
+            // window.location.href = "/";
+            navigate("/");
         })
         .catch(function (error) {
             // handle error

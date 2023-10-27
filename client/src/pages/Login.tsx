@@ -2,6 +2,8 @@ import * as React from "react";
 
 import {useState} from "react";
 
+import {useNavigate} from "react-router-dom";
+
 import {useAuthDispatch} from "../context/auth";
 
 import Header from "../components/login-signup/Header";
@@ -23,6 +25,8 @@ export default function Login() {
 
     const dispatch = useAuthDispatch();
 
+    const navigate = useNavigate();
+
     return (
         <div className="max-w-md w-full space-y-8">
             <Header
@@ -32,7 +36,7 @@ export default function Login() {
                 linkUrl="/register"
             />
             <form className="mt-8 space-y-6" onSubmit={
-                (e) => submitLoginForm(e, variables, errors, setErrors, dispatch)}>
+                (e) => submitLoginForm(e, variables, errors, setErrors, dispatch, navigate)}>
                 <div className="space-y-px">
                     {loginFields.map(field =>
                         <Input

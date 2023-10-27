@@ -1,5 +1,7 @@
 import React from "react";
 
+import {useNavigate} from "react-router-dom";
+
 import CanvasContainer from "../components/CanvasContainer"
 
 import {useAuthDispatch} from "../context/auth";
@@ -11,9 +13,12 @@ import {BiLogOut} from "react-icons/bi";
 export default function Home() {
     const authDispatch = useAuthDispatch();
 
+    const navigate = useNavigate();
+
     const logout = () => {
         authDispatch({type: "LOGOUT"});
-        window.location.href = "login";
+        // window.location.href = "login";
+        navigate("/login");
     };
 
     return (
