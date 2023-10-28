@@ -9,6 +9,7 @@ import {useAuthDispatch} from "../context/auth";
 import {AiOutlineHome, AiOutlineUser} from "react-icons/ai";
 import {HiOutlinePuzzle} from "react-icons/hi";
 import {BiLogOut} from "react-icons/bi";
+import {logo} from "../assets";
 
 export default function Home() {
     const authDispatch = useAuthDispatch();
@@ -28,6 +29,10 @@ export default function Home() {
                 <ul className="flex flex-col items-start py-3 h-full space-y-2 font-normal">
                     <li className="mb-3 w-full">
                         <a href="#" className="flex items-center p-2 text-gray-900">
+                            <img
+                                alt=""
+                                className="h-[31px] w-[50px]"
+                                src={logo}/>
                             <span className="text-lg font-bold">OTW Smart Home</span>
                         </a>
                     </li>
