@@ -8,17 +8,21 @@ const useClientSize = () => {
 
     // console.log(dimensions)
 
+    const setDimensionsFromNode = (node: any) => {
+        if (node != null) {
+            let computedStyle = getComputedStyle(node);
+            let paddingX = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
+            let paddingY = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+            setDimensions({height: node.clientHeight - paddingY, width: node.clientWidth - paddingX});
+        }
+    }
+
     // TODO: Can we figure out the type of any here?
     const canvasContainerRef = React.useCallback((node: any) => {
-        if (node != null) {
-            setDimensions({height: node.clientHeight, width: node.clientWidth});
-        }
+        setDimensionsFromNode(node);
 
-        // TODO: Dynamic rescaling kind of buggy
         window.addEventListener('resize', () => {
-            if (node != null) {
-                setDimensions({height: node.clientHeight, width: node.clientWidth});
-            }
+            setDimensionsFromNode(node);
         });
     }, []);
 

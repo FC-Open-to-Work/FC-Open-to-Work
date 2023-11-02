@@ -25,8 +25,8 @@ export default function Home() {
         <>
             <Sidebar logout={logout}/>
 
-            <div className="absolute flex flex-col gap-y-4 lg:flex-row gap-x-0 lg:gap-x-4 w-full h-full py-16 px-4 sm:px-8 sm:pl-[16rem]">
-                <div className="flex-1 h-full min-w-0 bg-blue-200 rounded-2xl"
+            <div className="absolute flex flex-col gap-y-4 lg:flex-row gap-x-0 lg:gap-x-4 w-full h-full py-14 px-4 sm:px-8 sm:pl-[16rem]">
+                <div className="flex-1 h-full min-w-0 p-4 bg-blue-200 rounded-2xl"
                      ref={canvasContainerRef}>
                     <CanvasContainer dimensions={dimensions}/>
                 </div>
