@@ -1,13 +1,16 @@
 import React from 'react';
 import {Stage, Layer, Rect, Text, Circle, Line} from 'react-konva';
 
-import useClientSize from "../hooks/useClientSize";
+interface CanvasContainerProps {
+    dimensions: {
+        height: number,
+        width: number
+    }
+}
 
-const CanvasContainer = () => {
-    const {dimensions, canvasContainerRef} = useClientSize();
-
+const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions}) => {
     return (
-        <div ref={canvasContainerRef}>
+        <div className="w-full">
             <Stage width={dimensions.width} height={dimensions.height}>
                 <Layer>
                     <Text text="Some text on canvas" fontSize={15}/>
