@@ -1,6 +1,5 @@
 import React from 'react';
 import {Stage, Layer, Rect, Text, Circle, Line} from 'react-konva';
-import Konva from "konva";
 
 interface CanvasContainerProps {
     dimensions: {
@@ -11,12 +10,12 @@ interface CanvasContainerProps {
 
 const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions}) => {
     return (
-        <div className="w-full">
+        <div className="border-2 rounded-lg border-blue-200 shadow w-full">
             <Stage width={dimensions.width} height={dimensions.height} draggable>
                 <Layer>
-                    <Line points={[5, 70, 140, 23, 250, 60, 300, 20]}
+                    <Line points={[5, 5, 300, 5]}
                             stroke="red"
-                            strokeWidth={15}
+                            strokeWidth={3}
                             lineCap="round"
                             lineJoin="round"
                     />
