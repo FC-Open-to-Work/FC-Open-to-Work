@@ -37,7 +37,7 @@ function submitLoginForm(e: FormEvent<HTMLFormElement>,
         .then(function (response) {
             // handle success
             console.log(response);
-            dispatch({type: "LOGIN", token: response.data.token});
+            dispatch({type: "LOGIN", token: response.data.token, username: response.data.username});
             // window.location.href = "/";
             navigate("/");
         })

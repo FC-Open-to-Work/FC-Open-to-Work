@@ -52,6 +52,7 @@ public class AuthenticationService {
             LOG.debug("Login token granted: {}", token);
 
             response.put("token", token);
+            response.put("username", userRepository.findByEmail(email).get().getUsername());
         }
 
         return response;

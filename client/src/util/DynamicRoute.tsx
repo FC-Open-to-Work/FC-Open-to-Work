@@ -7,11 +7,11 @@ export default function DynamicRoute(props: {
   authenticated: boolean;
   element: any;
 }) {
-  const { user } = useAuthState();
+  const { userToken } = useAuthState();
 
-  if (props.authenticated && !user) {
+  if (props.authenticated && !userToken) {
     return <Navigate to="/login" />;
-  } else if (!props.authenticated && user) {
+  } else if (!props.authenticated && userToken) {
     return <Navigate to="/" />;
   } else {
     return props.element;
