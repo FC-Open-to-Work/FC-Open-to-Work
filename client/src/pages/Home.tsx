@@ -45,7 +45,7 @@ export default function Home() {
 
                 <div className="flex flex-col gap-4 h-full shrink-0 grow-0 lg:basis-64 transition-transform">
                     <div className="flex flex-col justify-center place-items-center flex-1 bg-blue-100 rounded-2xl p-2">
-                        <Clock format={'LTS'} ticking={true} className="font-bold text-3xl text-orange-300 border-4 border-orange-300 px-1.5 py-0.5 rounded-md bg-white w-fit"></Clock>
+                        <Clock format={'LTS'} ticking={true} className="shadow font-bold text-3xl text-orange-300 border-4 border-orange-300 px-1.5 py-0.5 rounded-md bg-white w-fit"></Clock>
                         <Clock format={"ll"} className="text-xl font-bold mt-1"></Clock>
                         <div className="mt-5 flex place-items-center">
                             <FaTemperatureHalf size={25} className="text-orange-500"/>
