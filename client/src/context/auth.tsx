@@ -18,17 +18,20 @@ const AuthStateContext = createContext<State>({ userToken: "", username: "" });
 const AuthDispatchContext = createContext<Dispatch>(() => null);
 
 const token = localStorage.getItem("token");
+const name  = localStorage.getItem("name");
 
 let userToken: string = "";
 let username: string = "";
-if (token) {
+if (token && name) {
   const decodedToken: jwt = jwtDecode<jwt>(token);
   const expiresAt: Date = new Date(decodedToken.exp * 1000);
 
   if (new Date() > expiresAt) {
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
   } else {
     userToken = token;
+    username = name;
   }
 } else {
   console.log("no token found");
@@ -38,6 +41,7 @@ const authReducer = (state: State, action: Action) => {
   switch (action.type) {
     case "LOGIN":
       localStorage.setItem("token", action.token);
+      localStorage.setItem("name", action.username);
       return {
         ...state,
         userToken: action.token,
@@ -45,6 +49,7 @@ const authReducer = (state: State, action: Action) => {
       };
     case "LOGOUT":
       localStorage.removeItem("token");
+      localStorage.removeItem("name");
       return {
         ...state,
         userToken: "",
