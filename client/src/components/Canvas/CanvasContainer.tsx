@@ -15,13 +15,17 @@ interface CanvasContainerProps {
 }
 
 const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions, layoutItems}) => {
+    let [backgroundLoaded, setBackgroundLoaded] = React.useState(false);
     let background = new Image();
     background.src = papergrid;
+    background.onload = () => {
+        setBackgroundLoaded(true);
+    }
 
     return (
         <div className="border-2 rounded-lg border-blue-200 shadow w-full">
             <Stage width={dimensions.width - 4} height={dimensions.height} draggable>
-                <Layer >
+                <Layer>
                     <Rect
                         x={0}
                         y={0}
@@ -31,14 +35,16 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions, layoutItem
                         shadowBlur={1}
                         opacity={0.99}
                     />
-                    <Rect
-                        x={0}
-                        y={0}
-                        width={1677}
-                        height={1130}
-                        fillPatternImage={background}
-                        opacity={0.075}
-                    />
+                    {backgroundLoaded &&
+                        <Rect
+                            x={0}
+                            y={0}
+                            width={1677}
+                            height={1130}
+                            fillPatternImage={background}
+                            opacity={0.075}
+                        />
+                    }
                 </Layer>
                 <Layer>
                     <Walls walls={layoutItems.walls}/>
