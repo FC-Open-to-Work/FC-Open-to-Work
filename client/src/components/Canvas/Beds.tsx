@@ -10,13 +10,14 @@ interface BedsProps {
 const Beds = ({beds}: BedsProps) => {
     return (
         <>
-            {beds.map((bed, index) => <Bed
-                key={index.toString()}
-                locX={bed.locX}
-                locY={bed.locY}
-                size={bed.size}
-                orientation={bed.orientation}
-            />)}
+            {beds.map((bed, index) =>
+                <Bed
+                    key={index.toString()}
+                    locX={bed.locX}
+                    locY={bed.locY}
+                    size={bed.size}
+                    orientation={bed.orientation}
+                />)}
         </>
     );
 };

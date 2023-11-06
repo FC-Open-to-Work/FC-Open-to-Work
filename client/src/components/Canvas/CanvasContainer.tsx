@@ -1,10 +1,12 @@
 import React from 'react';
-import {Stage, Layer, Rect} from 'react-konva';
+import {Stage, Layer} from 'react-konva';
 import {papergrid} from '../../assets'
 import {LayoutItemsType} from "../../util/types";
 
+import Background from "./Background";
 import Beds from "./Beds";
 import Walls from "./Walls";
+import Lights from "./Lights";
 
 interface CanvasContainerProps {
     dimensions: {
@@ -25,30 +27,11 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions, layoutItem
     return (
         <div className="border-2 border-blue-200 shadow w-full">
             <Stage width={dimensions.width - 3} height={dimensions.height} draggable>
-                <Layer>
-                    <Rect
-                        x={0}
-                        y={0}
-                        width={1677}
-                        height={1130}
-                        fill="#dbeafe"
-                        shadowBlur={1}
-                        opacity={0.99}
-                    />
-                    {backgroundLoaded &&
-                        <Rect
-                            x={0}
-                            y={0}
-                            width={1677}
-                            height={1130}
-                            fillPatternImage={background}
-                            opacity={0.075}
-                        />
-                    }
-                </Layer>
+                <Background backgroundLoaded={backgroundLoaded} background={background}/>
                 <Layer>
                     <Walls walls={layoutItems.walls}/>
                     <Beds beds={layoutItems.beds}/>
+                    <Lights lights={layoutItems.lights}/>
                 </Layer>
             </Stage>
         </div>

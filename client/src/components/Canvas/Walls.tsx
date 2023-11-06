@@ -12,10 +12,11 @@ export default function Walls({walls}: WallsProps) {
                 return (
                     <Line key={index.toString()}
                           points={wall}
-                          stroke="black"
+                          stroke="#575d64"
                           strokeWidth={3}
                           lineCap="round"
                           lineJoin="round"
+                          shadowBlur={1}
                     />
                 );
             })}

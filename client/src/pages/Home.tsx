@@ -8,7 +8,7 @@ import Sidebar from "../components/Sidebar";
 import ControlPanel from "../components/ControlPanel";
 import {Widget} from "../components/Widget";
 
-import {getCurrentUserBeds, getCurrentUserWalls} from "../api/getLayoutItems";
+import {getCurrentUserBeds, getCurrentUserLights, getCurrentUserWalls} from "../api/getLayoutItems";
 import {logout} from "../api/authentication/AuthFormSubmit";
 
 import {LayoutItemsType} from "../util/types";
@@ -18,12 +18,13 @@ export default function Home() {
     const {dimensions, canvasContainerRef} = useClientSize();
 
     const [layoutItems, setLayoutItems] = useState<LayoutItemsType>(
-        {walls: [], beds: []});
+        {walls: [], beds: [], lights: []});
 
     useEffect(() => {
         setLayoutItems({
             walls: getCurrentUserWalls(),
-            beds: getCurrentUserBeds()
+            beds: getCurrentUserBeds(),
+            lights: getCurrentUserLights()
         });
     }, []);
 

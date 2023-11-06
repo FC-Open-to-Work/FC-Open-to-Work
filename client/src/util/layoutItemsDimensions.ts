@@ -3,7 +3,7 @@ import {Orientations, Sizes} from "./constants";
 
 const getBedDimensions = ({locX, locY, size, orientation}: BedType) => {
     const pillowWidth = 40;
-    const pillowHeight = 15;
+    const pillowHeight = 20;
 
     let width = 0;
     let height = 0;
@@ -80,9 +80,9 @@ const getBedDimensions = ({locX, locY, size, orientation}: BedType) => {
             break;
     }
 
-    pillowY = locY + 10;
+    pillowY = locY + 5;
     blanketX = locX + (width - blanketWidth) / 2;
-    blanketY = locY + 20 + pillowHeight;
+    blanketY = locY + 15 + pillowHeight;
 
     return {
         width,

@@ -36,9 +36,12 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                   y={locY}
                   width={width}
                   height={height}
-                  fill="#7f8389"
+                  fill="#6d747d"
                   shadowColor="black"
+                  shadowBlur={3}
                   cornerRadius={2}
+                  stroke="#575d64"
+                  strokeWidth={1}
             />
             {size === Sizes.QUEEN || size === Sizes.KING ?
                 <>
@@ -46,30 +49,38 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                           y={pillowY}
                           width={pillowWidth}
                           height={pillowHeight}
-                          fill="white"
+                          fill="#f0f8ff"
                           cornerRadius={3}
+                          stroke="#575d64"
+                          strokeWidth={1}
                     />
                     <Rect x={pillowX + width / 2}
                           y={pillowY}
                           width={pillowWidth}
                           height={pillowHeight}
-                          fill="white"
+                          fill="#f0f8ff"
                           cornerRadius={3}
+                          stroke="#575d64"
+                          strokeWidth={1}
                     />
                 </>
                 : <Rect x={pillowX}
                         y={pillowY}
                         width={pillowWidth}
                         height={pillowHeight}
-                        fill="white"
+                        fill="#f0f8ff"
                         cornerRadius={3}
+                        stroke="#575d64"
+                        strokeWidth={1}
                 />}
             <Rect x={blanketX}
                   y={blanketY}
                   width={blanketWidth}
                   height={blanketHeight}
-                  fill="white"
+                  fill="#f0f8ff"
                   cornerRadius={2}
+                  stroke="#575d64"
+                  strokeWidth={1}
             />
         </Group>
     );
