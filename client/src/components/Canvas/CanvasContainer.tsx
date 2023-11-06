@@ -23,8 +23,8 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions, layoutItem
     }
 
     return (
-        <div className="border-2 rounded-lg border-blue-200 shadow w-full">
-            <Stage width={dimensions.width - 4} height={dimensions.height} draggable>
+        <div className="border-2 border-blue-200 shadow w-full">
+            <Stage width={dimensions.width - 3} height={dimensions.height} draggable>
                 <Layer>
                     <Rect
                         x={0}
