@@ -127,4 +127,10 @@ function submitRegisterForm(e: FormEvent<HTMLFormElement>,
     }, 3000);
 }
 
-export {submitRegisterForm, submitLoginForm};
+function logout (dispatch: any, navigate: any) {
+    dispatch({type: "LOGOUT"});
+    // window.location.href = "login";
+    navigate("/login");
+}
+
+export {submitRegisterForm, submitLoginForm, logout};

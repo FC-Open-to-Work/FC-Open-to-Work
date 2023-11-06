@@ -3,8 +3,13 @@ import {logo} from "../assets";
 import {AiOutlineHome, AiOutlineUser} from "react-icons/ai";
 import {HiOutlinePuzzle} from "react-icons/hi";
 import {BiLogOut} from "react-icons/bi";
+import {useAuthDispatch} from "../context/auth";
+import {useNavigate} from "react-router-dom";
 
-function Sidebar({logout}: { logout: () => void }) {
+function Sidebar({logout}: any) {
+    const dispatch = useAuthDispatch();
+    const navigate = useNavigate();
+
     return (
         <aside id="sidebar"
                className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
@@ -40,7 +45,7 @@ function Sidebar({logout}: { logout: () => void }) {
                     </li>
                     <li className="w-full">
                         <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-blue-100"
-                           onClick={logout}>
+                           onClick={() => logout(dispatch, navigate)}>
                             <BiLogOut size={30}/>
                             <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
                         </a>
