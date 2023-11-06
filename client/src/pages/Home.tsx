@@ -2,25 +2,29 @@ import React, {useEffect, useState} from "react";
 
 import useClientSize from "../hooks/useClientSize";
 import {useAuthState} from "../context/auth";
-import {logout} from "../api/authentication/AuthFormSubmit";
 
 import CanvasContainer from "../components/Canvas/CanvasContainer"
 import Sidebar from "../components/Sidebar";
 import ControlPanel from "../components/ControlPanel";
 import {Widget} from "../components/Widget";
 
-type LayoutItems = {
-    walls: number[][]
-}
+import {getCurrentUserBeds, getCurrentUserWalls} from "../api/getLayoutItems";
+import {logout} from "../api/authentication/AuthFormSubmit";
+
+import {LayoutItemsType} from "../util/types";
 
 export default function Home() {
     const { username } = useAuthState();
     const {dimensions, canvasContainerRef} = useClientSize();
 
-    const [layoutItems, setLayoutItems] = useState<LayoutItems>({walls: []});
+    const [layoutItems, setLayoutItems] = useState<LayoutItemsType>(
+        {walls: [], beds: []});
 
     useEffect(() => {
-        setLayoutItems({walls: [[5,5,300,5], [5,50,300,50]]});
+        setLayoutItems({
+            walls: getCurrentUserWalls(),
+            beds: getCurrentUserBeds()
+        });
     }, []);
 
     return (

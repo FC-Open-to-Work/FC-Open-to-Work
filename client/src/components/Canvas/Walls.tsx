@@ -5,12 +5,13 @@ interface WallsProps {
     walls: number[][]
 }
 
-export function Walls({walls}: WallsProps) {
+export default function Walls({walls}: WallsProps) {
     return (
         <>
-            {walls.map((wall) => {
+            {walls.map((wall, index) => {
                 return (
-                    <Line points={wall}
+                    <Line key={index.toString()}
+                          points={wall}
                           stroke="black"
                           strokeWidth={3}
                           lineCap="round"
