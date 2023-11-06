@@ -27,8 +27,16 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions, layoutItem
                         y={0}
                         width={1677}
                         height={1130}
+                        fill="#dbeafe"
+                        shadowBlur={1}
+                        opacity={0.99}
+                    />
+                    <Rect
+                        x={0}
+                        y={0}
+                        width={1677}
+                        height={1130}
                         fillPatternImage={background}
-                        shadowBlur={2}
                         opacity={0.075}
                     />
                 </Layer>
