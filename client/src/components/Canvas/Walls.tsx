@@ -13,6 +13,7 @@ export default function Walls({walls}: WallsProps) {
                     <Line key={index.toString()}
                           points={wall}
                           stroke="#575d64"
+                            // stroke="black"
                           strokeWidth={3}
                           lineCap="round"
                           lineJoin="round"
