@@ -11,7 +11,7 @@ import {Widget} from "../components/Widget";
 import {getCurrentUserBeds, getCurrentUserLights, getCurrentUserWalls} from "../api/getLayoutItems";
 import {logout} from "../api/authentication/AuthFormSubmit";
 
-import {LayoutItemsType} from "../util/types";
+import {LayoutItemsType} from "../util/layoutItemTypes";
 
 export default function Home() {
     const { username } = useAuthState();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Circle} from "react-konva";
-import {LightType} from "../../util/types";
+import {LightType} from "../../util/layoutItemTypes";
 
 function Light({locX, locY, on}: LightType) {
     return (

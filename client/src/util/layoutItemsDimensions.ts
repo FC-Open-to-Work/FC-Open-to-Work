@@ -1,4 +1,4 @@
-import {BedType} from "./types";
+import {BedType} from "./layoutItemTypes";
 import {Orientations, Sizes} from "./constants";
 
 const getBedDimensions = ({locX, locY, size, orientation}: BedType) => {

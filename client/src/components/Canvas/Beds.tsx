@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Bed from "./Bed";
-import {BedType} from "../../util/types";
+import {BedType} from "../../util/layoutItemTypes";
 
 interface BedsProps {
     beds: BedType[]

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Light from "./Light";
-import {LightType} from "../../util/types";
+import {LightType} from "../../util/layoutItemTypes";
 
 interface LightsProps {
     lights: LightType[]

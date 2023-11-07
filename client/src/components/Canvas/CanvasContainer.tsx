@@ -1,7 +1,7 @@
 import React from 'react';
 import {Stage, Layer} from 'react-konva';
 import {papergrid} from '../../assets'
-import {LayoutItemsType} from "../../util/types";
+import {LayoutItemsType} from "../../util/layoutItemTypes";
 
 import Background from "./Background";
 import Beds from "./Beds";

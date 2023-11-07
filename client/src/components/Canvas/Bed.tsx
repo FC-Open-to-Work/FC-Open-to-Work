@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {BedType} from "../../util/types";
+import {BedType} from "../../util/layoutItemTypes";
 import {Sizes} from "../../util/constants";
 import {getBedDimensions} from "../../util/layoutItemsDimensions";
 

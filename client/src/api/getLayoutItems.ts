@@ -1,4 +1,4 @@
-import {BedType, LightType} from "../util/types";
+import {BedType, LightType} from "../util/layoutItemTypes";
 import {Orientations, Sizes} from "../util/constants";
 
 const getCurrentUserWalls = () => {
