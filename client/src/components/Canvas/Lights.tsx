@@ -1,12 +1,10 @@
 import * as React from 'react';
 import Light from "./Light";
-import {LightType} from "../../util/layoutItemTypes";
+import {useLayoutItemsState} from "../../context/layoutItems";
 
-interface LightsProps {
-    lights: LightType[]
-}
+export default function Lights() {
+    const {lights} = useLayoutItemsState();
 
-export default function Lights({lights}: LightsProps) {
     return (
         <>
             {lights.map((light, index) => {

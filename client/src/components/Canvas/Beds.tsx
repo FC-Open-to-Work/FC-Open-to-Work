@@ -1,13 +1,11 @@
 import React from 'react';
 
 import Bed from "./Bed";
-import {BedType} from "../../util/layoutItemTypes";
+import {useLayoutItemsState} from "../../context/layoutItems";
 
-interface BedsProps {
-    beds: BedType[]
-}
+const Beds = () => {
+    const {beds} = useLayoutItemsState();
 
-const Beds = ({beds}: BedsProps) => {
     return (
         <>
             {beds.map((bed, index) =>

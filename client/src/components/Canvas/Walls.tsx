@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Line} from "react-konva";
+import {useLayoutItemsState} from "../../context/layoutItems";
 
-interface WallsProps {
-    walls: number[][]
-}
 
-export default function Walls({walls}: WallsProps) {
+export default function Walls() {
+    const {walls} = useLayoutItemsState();
+
     return (
         <>
             {walls.map((wall, index) => {
