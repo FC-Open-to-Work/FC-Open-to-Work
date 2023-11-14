@@ -7,9 +7,7 @@ import {
     setCurrentUserLights
 } from "../api/layoutItemsAPI";
 
-type Action = { type: "GET_WALLS" }
-    | { type: "GET_BEDS" }
-    | { type: "GET_LIGHTS" }
+type Action = { type: "GET_LAYOUT_ITEMS" }
     | { type: "TOGGLE_LIGHT", payload: { index: number } };
 type Dispatch = (action: Action) => void;
 type LayoutItemsProviderProps = { children: React.ReactNode };
@@ -19,19 +17,11 @@ const LayoutItemsDispatchContext = createContext<Dispatch>(() => null);
 
 const layoutItemsReducer = (state: LayoutItemsType, action: Action) => {
     switch (action.type) {
-        case "GET_WALLS":
+        case "GET_LAYOUT_ITEMS":
             return {
                 ...state,
-                walls: getCurrentUserWalls()
-            };
-        case "GET_BEDS":
-            return {
-                ...state,
-                beds: getCurrentUserBeds()
-            };
-        case "GET_LIGHTS":
-            return {
-                ...state,
+                walls: getCurrentUserWalls(),
+                beds: getCurrentUserBeds(),
                 lights: getCurrentUserLights()
             };
         case "TOGGLE_LIGHT":

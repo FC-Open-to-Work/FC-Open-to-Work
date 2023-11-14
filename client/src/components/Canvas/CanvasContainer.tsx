@@ -26,10 +26,8 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions}) => {
     const dispatch = useLayoutItemsDispatch();
 
     useEffect(() => {
-        dispatch({type: "GET_WALLS"});
-        dispatch({type: "GET_BEDS"});
-        dispatch({type: "GET_LIGHTS"});
-    }, []);
+        dispatch({type: "GET_LAYOUT_ITEMS"});
+    }, [dispatch]);
 
     return (
         <div className="border-2 border-blue-200 shadow w-full">
