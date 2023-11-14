@@ -1,10 +1,16 @@
 import React, {createContext, useReducer, useContext} from "react";
 import {LayoutItemsType} from "../util/layoutItemTypes";
-import {getCurrentUserBeds, getCurrentUserLights, getCurrentUserWalls} from "../api/getLayoutItems";
+import {
+    getCurrentUserBeds,
+    getCurrentUserLights,
+    getCurrentUserWalls,
+    setCurrentUserLights
+} from "../api/layoutItemsAPI";
 
 type Action = { type: "GET_WALLS" }
     | { type: "GET_BEDS" }
-    | { type: "GET_LIGHTS" };
+    | { type: "GET_LIGHTS" }
+    | { type: "TOGGLE_LIGHT", payload: { index: number } };
 type Dispatch = (action: Action) => void;
 type LayoutItemsProviderProps = { children: React.ReactNode };
 
@@ -27,6 +33,11 @@ const layoutItemsReducer = (state: LayoutItemsType, action: Action) => {
             return {
                 ...state,
                 lights: getCurrentUserLights()
+            };
+        case "TOGGLE_LIGHT":
+            return {
+                ...state,
+                lights: setCurrentUserLights(state.lights, action.payload.index)
             };
         // default:
         //   throw new Error(`Unknown action type: ${typeof action}`);

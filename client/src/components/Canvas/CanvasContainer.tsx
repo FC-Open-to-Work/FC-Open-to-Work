@@ -6,7 +6,7 @@ import Background from "./Background";
 import Beds from "./Beds";
 import Walls from "./Walls";
 import Lights from "./Lights";
-import {useLayoutItemsDispatch} from "../../context/layoutItems";
+import {useLayoutItemsDispatch} from "../../context/layoutItemsContext";
 
 interface CanvasContainerProps {
     dimensions: {

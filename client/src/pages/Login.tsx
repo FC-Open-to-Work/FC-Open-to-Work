@@ -4,7 +4,7 @@ import {useState} from "react";
 
 import {useNavigate} from "react-router-dom";
 
-import {useAuthDispatch} from "../context/auth";
+import {useAuthDispatch} from "../context/authContext";
 
 import Header from "../components/login-signup/Header";
 import Input from "../components/login-signup/Input";

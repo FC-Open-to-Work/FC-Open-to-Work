@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 
-import {AuthProvider} from "./context/auth";
+import {AuthProvider} from "./context/authContext";
 
 import DynamicRoute from "./util/DynamicRoute";
 

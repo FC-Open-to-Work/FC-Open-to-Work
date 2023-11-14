@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Bed from "./Bed";
-import {useLayoutItemsState} from "../../context/layoutItems";
+import {useLayoutItemsState} from "../../context/layoutItemsContext";
 
 const Beds = () => {
     const {beds} = useLayoutItemsState();

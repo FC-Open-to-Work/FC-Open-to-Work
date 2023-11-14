@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-import { useAuthState } from "../context/auth";
+import { useAuthState } from "../context/authContext";
 
 export default function DynamicRoute(props: {
   authenticated: boolean;

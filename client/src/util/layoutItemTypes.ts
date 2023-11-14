@@ -14,6 +14,7 @@ type BedType = {
 }
 
 type LightType = {
+    name: string,
     locX: number,
     locY: number,
     on: boolean

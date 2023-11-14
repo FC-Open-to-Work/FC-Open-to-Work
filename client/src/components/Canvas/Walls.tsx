@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Line} from "react-konva";
-import {useLayoutItemsState} from "../../context/layoutItems";
+import {useLayoutItemsState} from "../../context/layoutItemsContext";
 
 
 export default function Walls() {

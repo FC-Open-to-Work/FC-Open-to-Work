@@ -3,7 +3,7 @@ import {logo} from "../assets";
 import {AiOutlineHome, AiOutlineUser} from "react-icons/ai";
 import {HiOutlinePuzzle} from "react-icons/hi";
 import {BiLogOut} from "react-icons/bi";
-import {useAuthDispatch} from "../context/auth";
+import {useAuthDispatch} from "../context/authContext";
 import {useNavigate} from "react-router-dom";
 
 function Sidebar({logout}: any) {

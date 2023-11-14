@@ -1,7 +1,7 @@
 import React from "react";
 
 import useClientSize from "../hooks/useClientSize";
-import {useAuthState} from "../context/auth";
+import {useAuthState} from "../context/authContext";
 
 import CanvasContainer from "../components/Canvas/CanvasContainer"
 import Sidebar from "../components/Sidebar";
@@ -10,7 +10,7 @@ import {Widget} from "../components/Widget";
 
 import {logout} from "../api/authentication/AuthFormSubmit";
 
-import {LayoutItemsProvider} from "../context/layoutItems";
+import {LayoutItemsProvider} from "../context/layoutItemsContext";
 
 export default function Home() {
     const { username } = useAuthState();
