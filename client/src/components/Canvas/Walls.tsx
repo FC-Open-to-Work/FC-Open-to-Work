@@ -18,6 +18,8 @@ export default function Walls() {
                           lineCap="round"
                           lineJoin="round"
                           shadowBlur={1}
+                          listening={false}
+                          perfectDrawEnabled={false}
                     />
                 );
             })}

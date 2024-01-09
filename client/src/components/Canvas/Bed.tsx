@@ -31,6 +31,8 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                y={locY}
                offsetX={groupOffsetX}
                offsetY={groupOffsetY}
+               listening={false}
+               perfectDrawEnabled={false}
         >
             <Rect x={locX}
                   y={locY}
@@ -42,6 +44,8 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                   cornerRadius={2}
                   stroke="#575d64"
                   strokeWidth={1}
+                  listening={false}
+                  perfectDrawEnabled={false}
             />
             {size === Sizes.QUEEN || size === Sizes.KING ?
                 <>
@@ -53,6 +57,8 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                           cornerRadius={3}
                           stroke="#575d64"
                           strokeWidth={1}
+                          listening={false}
+                          perfectDrawEnabled={false}
                     />
                     <Rect x={pillowX + width / 2}
                           y={pillowY}
@@ -62,6 +68,8 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                           cornerRadius={3}
                           stroke="#575d64"
                           strokeWidth={1}
+                          listening={false}
+                          perfectDrawEnabled={false}
                     />
                 </>
                 : <Rect x={pillowX}
@@ -72,6 +80,8 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                         cornerRadius={3}
                         stroke="#575d64"
                         strokeWidth={1}
+                        listening={false}
+                        perfectDrawEnabled={false}
                 />}
             <Rect x={blanketX}
                   y={blanketY}
@@ -81,6 +91,8 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
                   cornerRadius={2}
                   stroke="#575d64"
                   strokeWidth={1}
+                  listening={false}
+                  perfectDrawEnabled={false}
             />
         </Group>
     );

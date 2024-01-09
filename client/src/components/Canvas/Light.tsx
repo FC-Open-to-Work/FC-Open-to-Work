@@ -9,6 +9,7 @@ function Light({locX, locY, on}: LightType) {
                 fill={on ? "#ece787" :"#c5d1e1"}
                 shadowColor={on ? "#ece787" : "black"}
                 shadowBlur={on ? 35 : 3}
+                perfectDrawEnabled={false}
         />
     );
 }
