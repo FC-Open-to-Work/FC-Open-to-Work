@@ -24,6 +24,7 @@ POST /login
 ```
 {
     "token": "TOKEN_VALUE"
+    "username": "USERNAME"
 }
 ```
 

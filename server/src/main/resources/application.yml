@@ -19,6 +19,10 @@ spring:
     username: springuser
     password: opentowork
     driver-class-name: com.mysql.cj.jdbc.Driver
+  devtools:
+    remote:
+      enabled: true
+      secret: mysecret
 
 server:
   error:
