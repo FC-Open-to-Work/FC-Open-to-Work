@@ -1,3 +1,10 @@
+const api_domain = process.env.BACKEND_API_DOMAIN
+    ? process.env.BACKEND_API_DOMAIN
+    : "localhost";
+
+const api_url =
+    "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
+
 enum Sizes {
     SINGLE,
     TWIN,
@@ -13,4 +20,4 @@ enum Orientations {
     LEFT = 270
 }
 
-export {Sizes, Orientations};
+export {Sizes, Orientations, api_url};

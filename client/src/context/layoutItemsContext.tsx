@@ -1,13 +1,10 @@
 import React, {createContext, useReducer, useContext} from "react";
-import {LayoutItemsType} from "../util/layoutItemTypes";
+import {LayoutItemsType, LayoutObjectType} from "../util/layoutItemTypes";
 import {
-    getCurrentUserBeds,
-    getCurrentUserLights,
-    getCurrentUserWalls,
     setCurrentUserLights
 } from "../api/layoutItemsAPI";
 
-type Action = { type: "GET_LAYOUT_ITEMS" }
+type Action = { type: "SET_OBJECTS", data: {layoutObjects: LayoutObjectType[]} }
     | { type: "TOGGLE_LIGHT", payload: { index: number } };
 type Dispatch = (action: Action) => void;
 type LayoutItemsProviderProps = { children: React.ReactNode };
@@ -17,12 +14,13 @@ const LayoutItemsDispatchContext = createContext<Dispatch>(() => null);
 
 const layoutItemsReducer = (state: LayoutItemsType, action: Action) => {
     switch (action.type) {
-        case "GET_LAYOUT_ITEMS":
+        case "SET_OBJECTS":
+            let walls = action.data.layoutObjects.filter(layoutObject => layoutObject.type === "WALL")[0];
+            let beds = action.data.layoutObjects.filter(layoutObject => layoutObject.type === "BED")[0];
             return {
                 ...state,
-                walls: getCurrentUserWalls(),
-                beds: getCurrentUserBeds(),
-                lights: getCurrentUserLights()
+                walls: JSON.parse(walls.properties),
+                beds: JSON.parse(beds.properties)
             };
         case "TOGGLE_LIGHT":
             return {

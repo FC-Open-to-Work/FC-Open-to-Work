@@ -1,53 +1,22 @@
-import {BedType, LightType} from "../util/layoutItemTypes";
-import {Orientations, Sizes} from "../util/constants";
+import {LightType} from "../util/layoutItemTypes";
+import {api_url} from "../util/constants";
+import axios from "axios";
 
-const getCurrentUserWalls = () => {
-    let walls: string = localStorage.getItem("walls") || "";
-    let wallsArr: number[][] = [];
-
-    if (!walls) {
-        // MOCK DATA
-        wallsArr.push([100, 100, 700, 100]); // top
-        wallsArr.push([100, 100, 100, 500]); // left
-        wallsArr.push([100, 500, 550, 500]); // bottom
-        wallsArr.push([700, 100, 700, 500]); // right
-        wallsArr.push([675, 500, 700, 500]); // right
-
-        wallsArr.push([300, 100, 300, 400]); // bedroom wall long
-        wallsArr.push([300, 500, 300, 480]); // bedroom wall short
-
-        wallsArr.push([500, 100, 500, 125]); // living room wall short
-        wallsArr.push([500, 250, 500, 275]); // living room wall short
-        wallsArr.push([500, 275, 700, 275]); // living room wall long
-        localStorage.setItem("walls", JSON.stringify(wallsArr));
-    } else {
-        wallsArr = JSON.parse(walls);
-    }
-
-    return wallsArr;
+const getCurrentUserObjects = (dispatch: any) => {
+    axios
+        .get(api_url + "/api/layout/object", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            }
+        }).then(function (response) {
+            console.log(response.data);
+            dispatch({type: "SET_OBJECTS", data: response.data});
+        }).catch(function (error) {
+            console.log(error);
+    });
 }
 
-const getCurrentUserBeds = () => {
-    let beds: string = localStorage.getItem("beds") || "";
-    let bedsArr: BedType[] = [];
-
-    if (!beds) {
-        // MOCK DATA
-        // bedsArr.push({ locX: 104, locY: 170, size: Sizes.QUEEN, orientation: Orientations.LEFT }); // bed
-        // bedsArr.push({ locX: 547, locY: 160, size: Sizes.TWIN, orientation: Orientations.RIGHT }); // bed
-        localStorage.setItem("beds", JSON.stringify(bedsArr));
-    } else {
-        bedsArr = JSON.parse(beds);
-    }
-
-    // bedsArr.push({ locX: 300, locY: 700, size: Sizes.SINGLE, orientation: Orientations.UP }); // bed
-    // bedsArr.push({ locX: 500, locY: 700, size: Sizes.TWIN, orientation: Orientations.RIGHT }); // bed
-    // bedsArr.push({ locX: 700, locY: 700, size: Sizes.FULL, orientation: Orientations.DOWN }); // bed
-    // bedsArr.push({ locX: 900, locY: 700, size: Sizes.KING, orientation: Orientations.LEFT }); // bed
-    return bedsArr;
-}
-
-const getCurrentUserLights = () => {
+const getCurrentUserLights = (dispatch: any) => {
     let lights = localStorage.getItem("lights") || "";
     let lightsArr: LightType[] = [];
 
@@ -78,5 +47,5 @@ const setCurrentUserLights = (lights: LightType[], lightIndex: number) => {
     return newLights;
 }
 
-export { getCurrentUserWalls, getCurrentUserBeds, getCurrentUserLights, setCurrentUserLights };
+export { getCurrentUserObjects, setCurrentUserLights };
 

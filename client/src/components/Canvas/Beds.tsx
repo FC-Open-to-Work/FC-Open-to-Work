@@ -11,6 +11,7 @@ const Beds = () => {
             {beds.map((bed, index) =>
                 <Bed
                     key={index.toString()}
+                    id={bed.id}
                     locX={bed.locX}
                     locY={bed.locY}
                     size={bed.size}

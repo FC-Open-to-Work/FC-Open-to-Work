@@ -9,7 +9,8 @@ export default function Lights() {
         <>
             {lights.map((light, index) => {
                 return (
-                    <Light key={index.toString()}
+                    <Light id={light.id}
+                           key={index.toString()}
                            name={light.name}
                            locX={light.locX}
                            locY={light.locY}

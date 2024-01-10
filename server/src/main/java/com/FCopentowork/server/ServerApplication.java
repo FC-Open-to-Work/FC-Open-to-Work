@@ -66,6 +66,7 @@ public class ServerApplication {
 
     private JSONArray getJsonArray() {
         List<Integer[]> wallProperties = List.of(
+                new Integer[]{100, 100, 700, 100}, // top
                 new Integer[]{100, 100, 100, 500}, // left
                 new Integer[]{100, 500, 550, 500}, // bottom
                 new Integer[]{700, 100, 700, 500}, // right
@@ -85,10 +86,7 @@ public class ServerApplication {
         List<JSONObject> bedProperties = new ArrayList<>();
         JSONObject bed1 = new JSONObject();
         JSONObject bed2 = new JSONObject();
-        /* Refer to
-        * bedsArr.push({ locX: 104, locY: 170, size: Sizes.QUEEN, orientation: Orientations.LEFT }); // bed
-        bedsArr.push({ locX: 547, locY: 160, size: Sizes.TWIN, orientation: Orientations.RIGHT });
-        * */
+
         bed1.put("locX", 104);
         bed1.put("locY", 170);
         bed1.put("size", 3);

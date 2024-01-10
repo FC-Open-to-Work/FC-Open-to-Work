@@ -1,5 +1,12 @@
 import {Orientations, Sizes} from "./constants";
 
+type LayoutObjectType = {
+    id: number,
+    userId: number,
+    type: string,
+    properties: string
+}
+
 type LayoutItemsType = {
     walls: number[][]
     beds: BedType[]
@@ -22,4 +29,4 @@ type LightType = {
     on: boolean
 }
 
-export type { LayoutItemsType, BedType, LightType };
+export type { LayoutItemsType, BedType, LightType, LayoutObjectType };

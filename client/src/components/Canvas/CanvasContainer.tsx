@@ -7,6 +7,7 @@ import Beds from "./Beds";
 import Walls from "./Walls";
 import Lights from "./Lights";
 import {useLayoutItemsDispatch} from "../../context/layoutItemsContext";
+import {getCurrentUserObjects} from "../../api/layoutItemsAPI";
 
 interface CanvasContainerProps {
     dimensions: {
@@ -26,7 +27,7 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions}) => {
     const dispatch = useLayoutItemsDispatch();
 
     useEffect(() => {
-        dispatch({type: "GET_LAYOUT_ITEMS"});
+        getCurrentUserObjects(dispatch);
     }, [dispatch]);
 
     return (
