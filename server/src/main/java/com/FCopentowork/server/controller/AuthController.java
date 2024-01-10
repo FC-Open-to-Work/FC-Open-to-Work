@@ -2,8 +2,8 @@ package com.FCopentowork.server.controller;
 
 import com.FCopentowork.server.exception.DuplicateEmailException;
 import com.FCopentowork.server.exception.UserDoesNotExistException;
-import com.FCopentowork.server.model.LoginRequest;
-import com.FCopentowork.server.model.SignupRequest;
+import com.FCopentowork.server.model.api.LoginRequest;
+import com.FCopentowork.server.model.api.SignupRequest;
 import com.FCopentowork.server.service.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

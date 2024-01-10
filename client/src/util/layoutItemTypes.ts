@@ -7,6 +7,7 @@ type LayoutItemsType = {
 }
 
 type BedType = {
+    id: number,
     locX: number,
     locY: number,
     size: Sizes,
@@ -14,6 +15,7 @@ type BedType = {
 }
 
 type LightType = {
+    id: number,
     name: string,
     locX: number,
     locY: number,

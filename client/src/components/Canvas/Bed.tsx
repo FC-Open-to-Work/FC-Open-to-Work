@@ -9,7 +9,7 @@ import {Group, Rect} from "react-konva";
 // Size = SINGLE || TWIN || FULL || QUEEN || KING
 // ORIENTATION = UP || DOWN || LEFT || RIGHT
 // Note: origin is always in the top left corner of the bed
-const Bed = ({locX, locY, size, orientation}: BedType) => {
+const Bed = ({id, locX, locY, size, orientation}: BedType) => {
     let {
         width,
         height,
@@ -23,7 +23,7 @@ const Bed = ({locX, locY, size, orientation}: BedType) => {
         pillowY,
         blanketX,
         blanketY
-    } = getBedDimensions({locX, locY, size, orientation});
+    } = getBedDimensions({id, locX, locY, size, orientation});
 
     return (
         <Group rotation={orientation}

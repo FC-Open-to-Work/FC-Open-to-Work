@@ -3,7 +3,7 @@ package com.FCopentowork.server.service;
 import com.FCopentowork.server.controller.AuthController;
 import com.FCopentowork.server.exception.DuplicateEmailException;
 import com.FCopentowork.server.exception.UserDoesNotExistException;
-import com.FCopentowork.server.model.User;
+import com.FCopentowork.server.model.auth.User;
 import com.FCopentowork.server.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -33,8 +33,8 @@ const getCurrentUserBeds = () => {
 
     if (!beds) {
         // MOCK DATA
-        bedsArr.push({ locX: 104, locY: 170, size: Sizes.QUEEN, orientation: Orientations.LEFT }); // bed
-        bedsArr.push({ locX: 547, locY: 160, size: Sizes.TWIN, orientation: Orientations.RIGHT }); // bed
+        // bedsArr.push({ locX: 104, locY: 170, size: Sizes.QUEEN, orientation: Orientations.LEFT }); // bed
+        // bedsArr.push({ locX: 547, locY: 160, size: Sizes.TWIN, orientation: Orientations.RIGHT }); // bed
         localStorage.setItem("beds", JSON.stringify(bedsArr));
     } else {
         bedsArr = JSON.parse(beds);
@@ -53,9 +53,9 @@ const getCurrentUserLights = () => {
 
     if (!lights) {
         // MOCK DATA
-        lightsArr.push({ name: "bedroom light", locX: 125, locY: 325, on: false}); // bed
-        lightsArr.push({ name: "living room light", locX: 500, locY: 475, on: true}); // living room
-        lightsArr.push({ name: "bedroom light 2", locX: 680, locY: 135, on: false}); // bedroom
+        // lightsArr.push({ name: "bedroom light", locX: 125, locY: 325, on: false}); // bed
+        // lightsArr.push({ name: "living room light", locX: 500, locY: 475, on: true}); // living room
+        // lightsArr.push({ name: "bedroom light 2", locX: 680, locY: 135, on: false}); // bedroom
         localStorage.setItem("lights", JSON.stringify(lightsArr));
     } else {
         lightsArr = JSON.parse(lights);
