@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Bed from "./Bed";
-import {useLayoutItemsState} from "../../context/layoutItemsContext";
+import {useLayoutObjectsState} from "../../context/layoutObjectsContext";
 
 const Beds = () => {
-    const {beds} = useLayoutItemsState();
+    const {beds} = useLayoutObjectsState();
 
     return (
         <>

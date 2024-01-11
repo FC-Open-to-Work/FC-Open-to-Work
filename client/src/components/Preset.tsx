@@ -1,7 +1,7 @@
 import React from "react";
 import Toggle from "react-toggle";
 import "react-toggle/style.css"
-import {useLayoutItemsDispatch} from "../context/layoutItemsContext";
+import {useLayoutDevicesDispatch} from "../context/layoutDevicesContext";
 
 interface Props {
     index: number;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Preset({index, name, active}: Props) {
-    const dispatch = useLayoutItemsDispatch();
+    const dispatch = useLayoutDevicesDispatch();
     const changeHandler = () => {
         dispatch({type: "TOGGLE_LIGHT", payload: {index: index}});
     }

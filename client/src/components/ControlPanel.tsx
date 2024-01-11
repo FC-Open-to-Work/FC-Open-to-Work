@@ -1,9 +1,9 @@
 import React from 'react';
 import Preset from "./Preset";
-import {useLayoutItemsState} from "../context/layoutItemsContext";
+import {useLayoutDevicesState} from "../context/layoutDevicesContext";
 
 function ControlPanel() {
-    const {lights} = useLayoutItemsState();
+    const {lights} = useLayoutDevicesState();
 
     return (
         <div className="overflow-auto flex flex-col gap-2 mb-4 lg:mb-0 flex-1 bg-blue-100 rounded-2xl px-4 py-2">

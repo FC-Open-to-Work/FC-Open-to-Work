@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Light from "./Light";
-import {useLayoutItemsState} from "../../context/layoutItemsContext";
+import {useLayoutDevicesState} from "../../context/layoutDevicesContext";
 
 export default function Lights() {
-    const {lights} = useLayoutItemsState();
+    const {lights} = useLayoutDevicesState();
 
     return (
         <>
@@ -15,6 +15,7 @@ export default function Lights() {
                            locX={light.locX}
                            locY={light.locY}
                            on={light.on}
+                           value={light.value}
                     />
                 );
             })}

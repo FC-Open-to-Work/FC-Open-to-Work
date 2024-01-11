@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {BedType} from "../../util/layoutItemTypes";
+import {BedType} from "../../util/layoutObjectTypes";
 import {Sizes} from "../../util/constants";
-import {getBedDimensions} from "../../util/layoutItemsDimensions";
+import {getBedDimensions} from "../../util/layoutObjectsDimensions";
 
 import {Group, Rect} from "react-konva";
 

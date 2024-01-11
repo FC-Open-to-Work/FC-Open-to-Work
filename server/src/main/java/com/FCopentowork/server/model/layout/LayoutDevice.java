@@ -17,10 +17,12 @@ public class LayoutDevice {
     public LayoutDevice() {
     }
 
-    public LayoutDevice(Integer userId, LayoutDeviceType type, String properties) {
+    public LayoutDevice(Integer userId, LayoutDeviceType type, String properties, boolean isOn, Integer value) {
         this.userId = userId;
         this.type = type;
         this.properties = properties;
+        this.isOn = isOn;
+        this.value = value;
     }
 
     public Integer getId() {

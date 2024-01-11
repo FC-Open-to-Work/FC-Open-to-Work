@@ -7,12 +7,12 @@ type LayoutObjectType = {
     properties: string
 }
 
-type LayoutItemsType = {
+type LayoutObjectsType = {
     walls: number[][]
     beds: BedType[]
-    lights: LightType[]
 }
 
+// TODO: integrate id into related files, currently not used
 type BedType = {
     id: number,
     locX: number,
@@ -21,12 +21,4 @@ type BedType = {
     orientation: Orientations
 }
 
-type LightType = {
-    id: number,
-    name: string,
-    locX: number,
-    locY: number,
-    on: boolean
-}
-
-export type { LayoutItemsType, BedType, LightType, LayoutObjectType };
+export type { LayoutObjectsType, BedType, LayoutObjectType };

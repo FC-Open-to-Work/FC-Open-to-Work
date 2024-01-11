@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {Line} from "react-konva";
-import {useLayoutItemsState} from "../../context/layoutItemsContext";
+import {useLayoutObjectsState} from "../../context/layoutObjectsContext";
 
 
 export default function Walls() {
-    const {walls} = useLayoutItemsState();
+    const {walls} = useLayoutObjectsState();
 
     return (
         <>
