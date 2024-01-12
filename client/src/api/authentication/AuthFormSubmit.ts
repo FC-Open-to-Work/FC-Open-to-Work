@@ -1,5 +1,6 @@
 import {FormEvent} from "react";
 import axios from "axios";
+import {api_url} from "../../util/constants";
 
 interface LoginVariables {
     email: string;
@@ -20,12 +21,6 @@ function submitLoginForm(e: FormEvent<HTMLFormElement>,
                          dispatch: any,
                          navigate: any) {
     e.preventDefault();
-
-    const api_domain = process.env.BACKEND_API_DOMAIN
-        ? process.env.BACKEND_API_DOMAIN
-        : "localhost";
-    const api_url =
-        "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
 
     console.log("login\n");
 
@@ -76,12 +71,6 @@ function submitRegisterForm(e: FormEvent<HTMLFormElement>,
                             variables: RegisterVariables,
                             errors: RegisterVariables, setErrors: any) {
     e.preventDefault();
-
-    const api_domain = process.env.BACKEND_API_DOMAIN
-        ? process.env.BACKEND_API_DOMAIN
-        : "localhost";
-    const api_url =
-        "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
 
     if (variables.password === variables.confirmPassword) {
         axios

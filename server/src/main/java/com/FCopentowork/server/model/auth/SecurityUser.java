@@ -1,4 +1,4 @@
-package com.FCopentowork.server.model;
+package com.FCopentowork.server.model.auth;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

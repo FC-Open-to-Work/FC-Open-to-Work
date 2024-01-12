@@ -2,8 +2,8 @@ package com.FCopentowork.server.controller;
 
 import com.FCopentowork.server.exception.DuplicateEmailException;
 import com.FCopentowork.server.exception.UserDoesNotExistException;
-import com.FCopentowork.server.model.LoginRequest;
-import com.FCopentowork.server.model.SignupRequest;
+import com.FCopentowork.server.model.api.LoginRequest;
+import com.FCopentowork.server.model.api.SignupRequest;
 import com.FCopentowork.server.service.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -42,7 +42,11 @@ public class AuthController {
         } catch (AuthenticationException e) {
             response = Map.of("error", e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+        } catch (Exception e) {
+            response = Map.of("error", e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
         return responseEntity;
     }
 
@@ -64,6 +68,9 @@ public class AuthController {
         } catch (DuplicateEmailException e) {
             response = Map.of("error", e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            response = Map.of("error", e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         return responseEntity;
