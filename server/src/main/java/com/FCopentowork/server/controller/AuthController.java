@@ -42,7 +42,11 @@ public class AuthController {
         } catch (AuthenticationException e) {
             response = Map.of("error", e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+        } catch (Exception e) {
+            response = Map.of("error", e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
         return responseEntity;
     }
 
@@ -64,6 +68,9 @@ public class AuthController {
         } catch (DuplicateEmailException e) {
             response = Map.of("error", e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            response = Map.of("error", e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         return responseEntity;
