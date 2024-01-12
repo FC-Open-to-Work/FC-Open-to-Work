@@ -2,17 +2,19 @@ import React from "react";
 import Toggle from "react-toggle";
 import "react-toggle/style.css"
 import {useLayoutDevicesDispatch} from "../context/layoutDevicesContext";
+import {setCurrentUserLights} from "../api/layout/layoutDevicesAPI";
 
 interface Props {
-    index: number;
+    id: number;
     name: string;
     active: boolean;
 }
 
-function Preset({index, name, active}: Props) {
+function Preset({id, name, active}: Props) {
     const dispatch = useLayoutDevicesDispatch();
+
     const changeHandler = () => {
-        dispatch({type: "TOGGLE_LIGHT", payload: {index: index}});
+        setCurrentUserLights(dispatch, id);
     }
 
     return (

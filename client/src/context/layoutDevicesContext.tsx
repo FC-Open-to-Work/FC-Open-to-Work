@@ -2,7 +2,7 @@ import React, {createContext} from "react";
 import {LayoutDeviceType, LayoutDevicesType, LightType} from "../util/layoutDeviceTypes";
 
 type Action = { type: "SET_DEVICES", data: {layoutDevices: LayoutDeviceType[]} } |
-    { type: "TOGGLE_LIGHT", payload: { index: number } };
+    { type: "TOGGLE_LIGHT", id: number };
 type Dispatch = (action: Action) => void;
 type LayoutDevicesProviderProps = { children: React.ReactNode };
 
@@ -34,9 +34,19 @@ const layoutDevicesReducer = (state: LayoutDevicesType, action: Action) => {
                 lights: lightsArr
             };
         case "TOGGLE_LIGHT":
+            let newLights = state.lights.map(light => {
+                if (light.id === action.id) {
+                    return {
+                        ...light,
+                        on: !light.on
+                    }
+                }
+                return light;
+            });
+
             return {
                 ...state,
-                // lights: setCurrentUserLights(state.lights, action.payload.index)
+                lights: newLights
             };
         // default:
         //   throw new Error(`Unknown action type: ${typeof action}`);

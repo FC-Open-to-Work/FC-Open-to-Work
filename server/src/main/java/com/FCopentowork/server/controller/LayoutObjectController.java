@@ -31,6 +31,9 @@ public class LayoutObjectController {
         } catch (UserDoesNotExistException e) {
             response = Map.of("error", e.getMessage());
             responseEntity = new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            response = Map.of("error", e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         return responseEntity;
