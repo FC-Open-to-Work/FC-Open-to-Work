@@ -1,6 +1,6 @@
 package com.FCopentowork.server.UserDetailsService;
 
-import com.FCopentowork.server.model.SecurityUser;
+import com.FCopentowork.server.model.auth.SecurityUser;
 import com.FCopentowork.server.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

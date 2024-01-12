@@ -1,4 +1,4 @@
-package com.FCopentowork.server.model;
+package com.FCopentowork.server.model.api;
 
 import jakarta.validation.constraints.NotBlank;
 

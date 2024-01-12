@@ -6,7 +6,10 @@ import Background from "./Background";
 import Beds from "./Beds";
 import Walls from "./Walls";
 import Lights from "./Lights";
-import {useLayoutItemsDispatch} from "../../context/layoutItemsContext";
+import {useLayoutObjectsDispatch} from "../../context/layoutObjectsContext";
+import {useLayoutDevicesDispatch} from "../../context/layoutDevicesContext";
+import {getCurrentUserObjects} from "../../api/layout/layoutObjectsAPI";
+import {getCurrentUserDevices} from "../../api/layout/layoutDevicesAPI";
 
 interface CanvasContainerProps {
     dimensions: {
@@ -23,11 +26,13 @@ const CanvasContainer: React.FC<CanvasContainerProps> = ({dimensions}) => {
         setBackgroundLoaded(true);
     }
 
-    const dispatch = useLayoutItemsDispatch();
+    const layoutObjectsDispatch = useLayoutObjectsDispatch();
+    const layoutDevicesDispatch = useLayoutDevicesDispatch();
 
     useEffect(() => {
-        dispatch({type: "GET_LAYOUT_ITEMS"});
-    }, [dispatch]);
+        getCurrentUserObjects(layoutObjectsDispatch);
+        getCurrentUserDevices(layoutDevicesDispatch);
+    }, [layoutObjectsDispatch, layoutDevicesDispatch]);
 
     return (
         <div className="border-2 border-blue-200 shadow w-full">

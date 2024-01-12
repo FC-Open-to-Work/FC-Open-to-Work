@@ -1,7 +1,7 @@
 package com.FCopentowork.server.repository;
 
 
-import com.FCopentowork.server.model.User;
+import com.FCopentowork.server.model.auth.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
