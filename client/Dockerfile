@@ -1,13 +1,7 @@
-FROM node:alpine
-
-RUN mkdir /app
-
+FROM node:18-alpine
 WORKDIR /app
-COPY package.json .
+COPY package*.json ./
 RUN npm install
-
-RUN npm install -g nodemon
-
 COPY . .
-
-CMD ["nodemon", "-L", "--exec", "npm", "run", "start"]
+#CMD ["npm", "run", "build"]
+CMD ["npm", "start"]
