@@ -25,7 +25,7 @@ function submitLoginForm(e: FormEvent<HTMLFormElement>,
     console.log("login\n");
 
     axios
-        .post(api_url + "/login", {
+        .post(api_url + "/api/auth/login", {
             email: variables.email,
             password: variables.password,
         })
@@ -74,7 +74,7 @@ function submitRegisterForm(e: FormEvent<HTMLFormElement>,
 
     if (variables.password === variables.confirmPassword) {
         axios
-            .post(api_url + "/signup", {
+            .post(api_url + "/api/auth/signup", {
                 email: variables.email,
                 username: variables.username,
                 password: variables.password,
