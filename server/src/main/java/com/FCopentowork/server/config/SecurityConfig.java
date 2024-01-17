@@ -72,6 +72,7 @@ public class SecurityConfig {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
+        System.out.println("CorsConfigurationSource: permitted origins");
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost", "http://otw-smarthomehub.online", "http://165.22.238.115"));
         configuration.setAllowedMethods(List.of("*"));
