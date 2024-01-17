@@ -46,6 +46,8 @@ services:
       - otw-backend
     environment:
       BACKEND_API_DOMAIN: "otw-backend"
+    volumes:
+      - webdata:/app/build/
     ports:
       - 3000:3000
     networks:
@@ -60,6 +62,7 @@ services:
       - 443:443
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d:ro
+      - webdata:/usr/share/nginx/html:ro
 #      - ./certbot/www/:/var/www/certbot/:ro
 #      - ./certbot/conf/:/etc/letsencrypt/
 
@@ -69,3 +72,4 @@ networks:
 
 volumes:
   dbdata:
+  webdata:
