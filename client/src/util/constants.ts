@@ -2,8 +2,10 @@ const api_domain = process.env.REACT_APP_BACKEND_API_DOMAIN
     ? process.env.REACT_APP_BACKEND_API_DOMAIN
     : "localhost";
 
+// const api_url =
+//     "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
 const api_url =
-    "http://" + api_domain + ":" + process.env.REACT_APP_BACKEND_API_PORT;
+    "http://" + api_domain;
 
 enum Sizes {
     SINGLE,
