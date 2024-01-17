@@ -22,7 +22,7 @@ function submitLoginForm(e: FormEvent<HTMLFormElement>,
                          navigate: any) {
     e.preventDefault();
 
-    console.log("login\n");
+    console.log("requesting login to" + api_url + "/api/auth/login)");
 
     axios
         .post(api_url + "/api/auth/login", {
