@@ -1,4 +1,3 @@
-
 services:
   otw-mysql:
     build:
@@ -27,6 +26,12 @@ services:
     depends_on:
       otw-mysql:
         condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
     environment:
       MYSQL_HOST: "otw-mysql"
     ports:
@@ -43,32 +48,20 @@ services:
       dockerfile: Dockerfile
     container_name: otw-frontend
     depends_on:
-      - otw-backend
+      otw-backend:
+        condition: service_healthy
     environment:
       BACKEND_API_DOMAIN: "otw-backend"
     volumes:
-      - webdata:/app/build/
-    ports:
-      - 3000:3000
-    networks:
-      - frontend
-#    volumes:
-##      - /app/node_modules
-#      - ./client:/app
-  otw-server:
-    image: nginx:1.25.3-alpine
-    container_name: otw-server
-    depends_on:
-      - otw-frontend
-      - otw-backend
+      - ./nginx/conf:/etc/nginx/conf.d:ro
+#      - /app/node_modules
+#      - ./certbot/www/:/var/www/certbot/:ro
+#      - ./certbot/conf/:/etc/letsencrypt/
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - ./nginx/conf:/etc/nginx/conf.d:ro
-      - webdata:/usr/share/nginx/html:ro
-#      - ./certbot/www/:/var/www/certbot/:ro
-#      - ./certbot/conf/:/etc/letsencrypt/
+    networks:
+      - frontend
 
 networks:
   backend:
@@ -76,4 +69,3 @@ networks:
 
 volumes:
   dbdata:
-  webdata:

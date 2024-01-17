@@ -53,10 +53,12 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println("SecurityFilterChain: permitted actuator");
         return http
                 .cors(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/actuator/health").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/signup").permitAll()
                         .anyRequest().authenticated())
