@@ -57,6 +57,7 @@ services:
 #      - ./client:/app
   otw-server:
     image: nginx:1.25.3-alpine
+    container_name: otw-server
     depends_on:
       - otw-frontend
       - otw-backend
