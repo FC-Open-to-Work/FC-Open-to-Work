@@ -15,8 +15,8 @@ services:
     restart: always
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 10s
-      retries: 10
+      timeout: 5s
+      retries: 20
 
   otw-backend:
     build:

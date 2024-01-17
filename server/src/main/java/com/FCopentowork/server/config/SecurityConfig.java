@@ -74,7 +74,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         System.out.println("CorsConfigurationSource: permitted origins");
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*"));
+        configuration.setAllowedOrigins(List.of("http://otw-smarthomehub.online"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setMaxAge(-1L);
