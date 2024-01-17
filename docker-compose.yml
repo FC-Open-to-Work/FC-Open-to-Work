@@ -59,6 +59,7 @@ services:
     image: nginx:1.25.3-alpine
     depends_on:
       - otw-frontend
+      - otw-backend
     ports:
       - 80:80
       - 443:443
