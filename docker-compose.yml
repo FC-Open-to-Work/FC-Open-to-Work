@@ -57,6 +57,8 @@ services:
 #      - ./client:/app
   otw-server:
     image: nginx:1.25.3-alpine
+    depends_on:
+      - otw-frontend
     ports:
       - 80:80
       - 443:443
