@@ -11,6 +11,15 @@ const LayoutObjectsDispatchContext = createContext<Dispatch>(() => null);
 const layoutObjectsReducer = (state: LayoutObjectsType, action: Action) => {
     switch (action.type) {
         case "SET_OBJECTS":
+            // If there are no layout objects, return empty arrays
+            if (action.data.layoutObjects.length === 0) {
+                return {
+                    ...state,
+                    walls: [],
+                    beds: []
+                };
+            }
+
             // Both walls and beds are condensed into a single object with properties specifying the coordinates of multiple walls/beds
             let walls = action.data.layoutObjects.filter(layoutObject => layoutObject.type === "WALL")[0];
             let beds = action.data.layoutObjects.filter(layoutObject => layoutObject.type === "BED")[0];
