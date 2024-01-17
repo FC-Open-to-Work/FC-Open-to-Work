@@ -50,8 +50,6 @@ services:
     depends_on:
       otw-backend:
         condition: service_healthy
-    environment:
-      BACKEND_API_DOMAIN: "165.22.238.115"
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d:ro
 #      - /app/node_modules
