@@ -1,5 +1,5 @@
-const api_domain = process.env.BACKEND_API_DOMAIN
-    ? process.env.BACKEND_API_DOMAIN
+const api_domain = process.env.REACT_APP_BACKEND_API_DOMAIN
+    ? process.env.REACT_APP_BACKEND_API_DOMAIN
     : "localhost";
 
 const api_url =
